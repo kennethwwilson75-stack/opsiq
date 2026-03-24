@@ -1,0 +1,4 @@
+robot_id,battery,event
+R1,92,task_completed
+R2,45,path_blocked
+R3,12,charging_started
