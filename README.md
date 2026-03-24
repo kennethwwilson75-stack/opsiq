@@ -23,7 +23,8 @@ Python · LangGraph · Claude API · Streamlit · Langfuse · Pandas
 - Synthetic AGV fleet telemetry (generated)
 
 ## Status
-🔨 Week 1 — Environment and foundations complete
+✅ Week 1 — Environment and foundations complete  
+🔨 Week 2 — Data generation and ingestion pipeline
 
 ## Author
 Kenneth W. Wilson — Agentic AI Architect  
