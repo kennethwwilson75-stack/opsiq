@@ -1,0 +1,62 @@
+{
+  "R1": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  },
+  "R2": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  },
+  "R3": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  },
+  "R4": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  },
+  "R5": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  },
+  "R6": {
+    "failure_count": 2,
+    "mtbf_days": 11.0,
+    "avg_mttr_hours": 8.0,
+    "total_downtime_hours": 16.0
+  },
+  "R7": {
+    "failure_count": 2,
+    "mtbf_days": 13.0,
+    "avg_mttr_hours": 5.2,
+    "total_downtime_hours": 10.5
+  },
+  "R8": {
+    "failure_count": 10,
+    "mtbf_days": 1.0,
+    "avg_mttr_hours": 6.9,
+    "total_downtime_hours": 69.0
+  },
+  "R9": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  },
+  "R10": {
+    "failure_count": 0,
+    "mtbf_days": null,
+    "avg_mttr_hours": 0,
+    "total_downtime_hours": 0
+  }
+}
