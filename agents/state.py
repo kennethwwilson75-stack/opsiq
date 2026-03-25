@@ -92,6 +92,7 @@ class AlertOutput(BaseModel):
     recurring_alert_count: int
     escalation_count: int
     escalations: List[Dict[str, Any]]
+    summary: str = "" 
     status: str
 
 # ── REPORTING AGENT OUTPUT ─────────────────────────────────
