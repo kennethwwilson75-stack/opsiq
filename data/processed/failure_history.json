@@ -3,84 +3,84 @@
     "robot_id": "R8",
     "failure_date": "2025-01-01",
     "day": 0,
-    "downtime_hours": 5.5
+    "downtime_hours": 7.7
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-02",
     "day": 1,
-    "downtime_hours": 8.0
+    "downtime_hours": 9.9
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-03",
     "day": 2,
-    "downtime_hours": 7.4
+    "downtime_hours": 4.3
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-04",
     "day": 3,
-    "downtime_hours": 4.8
+    "downtime_hours": 7.7
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-05",
     "day": 4,
-    "downtime_hours": 6.5
+    "downtime_hours": 4.2
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-06",
     "day": 5,
-    "downtime_hours": 9.7
+    "downtime_hours": 7.4
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-07",
     "day": 6,
-    "downtime_hours": 9.1
+    "downtime_hours": 9.8
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-08",
     "day": 7,
-    "downtime_hours": 7.6
+    "downtime_hours": 5.1
   },
   {
     "robot_id": "R6",
     "failure_date": "2025-01-09",
     "day": 8,
-    "downtime_hours": 8.7
+    "downtime_hours": 7.2
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-09",
     "day": 8,
-    "downtime_hours": 5.7
+    "downtime_hours": 4.6
   },
   {
     "robot_id": "R8",
     "failure_date": "2025-01-10",
     "day": 9,
-    "downtime_hours": 4.7
+    "downtime_hours": 5.3
   },
   {
     "robot_id": "R7",
     "failure_date": "2025-01-13",
     "day": 12,
-    "downtime_hours": 5.3
+    "downtime_hours": 4.0
   },
   {
     "robot_id": "R6",
     "failure_date": "2025-01-20",
     "day": 19,
-    "downtime_hours": 7.3
+    "downtime_hours": 9.2
   },
   {
     "robot_id": "R7",
     "failure_date": "2025-01-26",
     "day": 25,
-    "downtime_hours": 5.2
+    "downtime_hours": 6.7
   }
 ]

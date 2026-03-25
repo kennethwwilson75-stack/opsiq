@@ -32,20 +32,20 @@
   "R6": {
     "failure_count": 2,
     "mtbf_days": 11.0,
-    "avg_mttr_hours": 8.0,
-    "total_downtime_hours": 16.0
+    "avg_mttr_hours": 8.2,
+    "total_downtime_hours": 16.4
   },
   "R7": {
     "failure_count": 2,
     "mtbf_days": 13.0,
-    "avg_mttr_hours": 5.2,
-    "total_downtime_hours": 10.5
+    "avg_mttr_hours": 5.3,
+    "total_downtime_hours": 10.7
   },
   "R8": {
     "failure_count": 10,
     "mtbf_days": 1.0,
-    "avg_mttr_hours": 6.9,
-    "total_downtime_hours": 69.0
+    "avg_mttr_hours": 6.6,
+    "total_downtime_hours": 66.0
   },
   "R9": {
     "failure_count": 0,

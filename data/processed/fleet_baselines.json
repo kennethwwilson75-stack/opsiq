@@ -1,56 +1,56 @@
 {
   "R1": {
-    "avg_speed": 1.299,
+    "avg_speed": 1.303,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.268
+    "task_completion_rate": 0.301
   },
   "R2": {
-    "avg_speed": 1.2,
+    "avg_speed": 1.195,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.271
+    "task_completion_rate": 0.299
   },
   "R3": {
-    "avg_speed": 1.399,
+    "avg_speed": 1.398,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.265
+    "task_completion_rate": 0.303
   },
   "R4": {
-    "avg_speed": 1.198,
+    "avg_speed": 1.201,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.286
+    "task_completion_rate": 0.315
   },
   "R5": {
-    "avg_speed": 1.099,
+    "avg_speed": 1.101,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.271
+    "task_completion_rate": 0.283
   },
   "R6": {
-    "avg_speed": 0.667,
+    "avg_speed": 0.665,
     "avg_battery_drain": 100.0,
     "avg_health_score": 66.0,
-    "task_completion_rate": 0.188
+    "task_completion_rate": 0.209
   },
   "R7": {
-    "avg_speed": 0.912,
+    "avg_speed": 0.909,
     "avg_battery_drain": 100.0,
     "avg_health_score": 94.0,
-    "task_completion_rate": 0.274
+    "task_completion_rate": 0.3
   },
   "R9": {
-    "avg_speed": 0.999,
+    "avg_speed": 1.003,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.27
+    "task_completion_rate": 0.315
   },
   "R10": {
-    "avg_speed": 1.5,
+    "avg_speed": 1.498,
     "avg_battery_drain": 100.0,
     "avg_health_score": 100.0,
-    "task_completion_rate": 0.271
+    "task_completion_rate": 0.287
   }
 }

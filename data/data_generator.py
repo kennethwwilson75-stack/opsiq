@@ -35,11 +35,11 @@ ROBOT_PROFILES = {
 }
 
 EVENT_TYPES = [
-    "task_completed", "task_completed", "task_completed",  # weighted more common
+    "task_completed", "task_completed", "task_completed",
     "robot_started_task", "robot_started_task",
     "charging_started", "charging_completed",
     "path_blocked", "intersection_wait",
-    "deadlock_detected", "low_battery_warning"
+    "low_battery_warning"
 ]
 
 LOCATIONS = [
@@ -97,13 +97,18 @@ def generate_event(robot_id, day, event_num, battery, deg_factor):
     battery = max(0, battery - battery_drain + np.random.normal(0, 0.2))
 
     # Event selection weighted by health
+    # Event selection weighted by health
     if deg_factor > 2.0:
+        # Severely degraded — deadlocks and blocks only
         event = np.random.choice(["deadlock_detected", "path_blocked", "low_battery_warning"], p=[0.4, 0.4, 0.2])
         speed = 0.0
     elif deg_factor > 1.5:
+        # Degrading — more path blocks, no deadlocks
         event = np.random.choice(EVENT_TYPES + ["path_blocked", "path_blocked", "low_battery_warning"])
     else:
-        event = np.random.choice(EVENT_TYPES)
+        # Healthy — normal events only, never deadlocks
+        healthy_events = [e for e in EVENT_TYPES if e != "deadlock_detected"]
+        event = np.random.choice(healthy_events)
 
     # Location — degraded robots tend to get stuck at intersections
     if deg_factor > 1.5:
