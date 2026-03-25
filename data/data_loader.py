@@ -45,11 +45,10 @@ def load_cmapss_train():
         names=CMAPSS_COLUMNS
     )
 
-    # Drop last two columns — they are always NaN in FD001
+    # Drop last two columns — always NaN in FD001
     df = df.dropna(axis=1, how="all")
 
     # Add RUL — remaining useful life
-    # RUL = max cycle for that engine minus current cycle
     max_cycles = df.groupby("engine_id")["cycle"].max().reset_index()
     max_cycles.columns = ["engine_id", "max_cycle"]
     df = df.merge(max_cycles, on="engine_id")
@@ -67,7 +66,7 @@ def normalize_cmapss(df):
     print("Normalizing CMAPSS sensor data...")
     sensor_cols = [c for c in df.columns if c.startswith("sensor_")]
 
-    # Drop sensors with near-zero variance — they carry no signal
+    # Drop sensors with near-zero variance
     useful_sensors = []
     dropped_sensors = []
     for col in sensor_cols:
@@ -79,7 +78,7 @@ def normalize_cmapss(df):
     print(f"  Useful sensors: {len(useful_sensors)}")
     print(f"  Dropped (no variance): {dropped_sensors}")
 
-    # Min-max normalize the useful sensors to 0-1 range
+    # Min-max normalize
     df_norm = df.copy()
     for col in useful_sensors:
         col_min = df[col].min()
@@ -87,7 +86,7 @@ def normalize_cmapss(df):
         if col_max > col_min:
             df_norm[col] = (df[col] - col_min) / (col_max - col_min)
 
-        # Save normalized data
+    # Save normalized data
     df_norm.to_csv(PROCESSED_DIR / "cmapss_normalized.csv", index=False)
     print(f"  Saved normalized data to data/processed/cmapss_normalized.csv")
 
@@ -99,27 +98,35 @@ def calculate_engine_profiles(df_norm, useful_sensors):
     profiles = {}
 
     for engine_id in df_norm["engine_id"].unique():
-        engine_data = df_norm[df_norm["engine_id"] == engine_id]
-        total_cycles = engine_data["cycle"].max()
-        current_rul = engine_data["rul"].min()
+        engine_data = df_norm[df_norm["engine_id"] == engine_id].sort_values("cycle")
+        total_cycles = int(engine_data["cycle"].max())
 
-        # Health score — linear decay from 100 to 0
-        health_score = round((current_rul / total_cycles) * 100, 1)
+        # Simulate engine at 70-90% of life — currently running, not yet failed
+        # Varies per engine so we get a spread of RUL values
+        snapshot_pct = 0.30 + (int(engine_id) % 70) * 0.01
+        snapshot_cycle = int(total_cycles * snapshot_pct)
+        snapshot_data = engine_data[engine_data["cycle"] <= snapshot_cycle]
+        current_cycle = int(snapshot_data["cycle"].max())
+        actual_rul = int(snapshot_data["rul"].min())
+
+        # Health score based on remaining life percentage
+        health_score = round((actual_rul / total_cycles) * 100, 1)
 
         # Degradation rate — slope of sensor trends in last 20 cycles
-        recent = engine_data.tail(20)
-        early = engine_data.head(20)
+        recent = snapshot_data.tail(20)
+        early = snapshot_data.head(20)
 
         sensor_deltas = {}
-        for s in useful_sensors[:6]:  # top 6 sensors for brevity
+        for s in useful_sensors[:6]:
             early_mean = early[s].mean()
             recent_mean = recent[s].mean()
             sensor_deltas[s] = round(recent_mean - early_mean, 4)
 
         profiles[str(engine_id)] = {
             "engine_id": int(engine_id),
-            "total_cycles": int(total_cycles),
-            "current_rul": int(current_rul),
+            "total_cycles": total_cycles,
+            "current_cycle": current_cycle,
+            "current_rul": actual_rul,
             "health_score": health_score,
             "sensor_deltas": sensor_deltas,
             "degradation_rate": round(sum(abs(v) for v in sensor_deltas.values()), 4)
@@ -131,13 +138,15 @@ def calculate_engine_profiles(df_norm, useful_sensors):
 
     print(f"  Profiles calculated for {len(profiles)} engines")
 
-    # Show top 5 most degraded
-    sorted_profiles = sorted(profiles.values(), key=lambda x: x["current_rul"])
-    print("\n  Top 5 engines by lowest RUL:")
-    for p in sorted_profiles[:5]:
+    # Show top 5 most at-risk
+    at_risk = [p for p in profiles.values() if 0 < p["current_rul"] <= 100]
+    at_risk_sorted = sorted(at_risk, key=lambda x: x["current_rul"])
+    print(f"\n  Engines with RUL <= 100 cycles: {len(at_risk)}")
+    print("  Top 5 most at-risk:")
+    for p in at_risk_sorted[:5]:
         print(f"    Engine {p['engine_id']:3d}: RUL={p['current_rul']:3d} cycles, "
               f"health={p['health_score']:5.1f}%, "
-              f"degradation_rate={p['degradation_rate']:.4f}")
+              f"cycle={p['current_cycle']}/{p['total_cycles']}")
 
     return profiles
 
