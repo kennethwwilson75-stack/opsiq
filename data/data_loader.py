@@ -87,6 +87,10 @@ def normalize_cmapss(df):
         if col_max > col_min:
             df_norm[col] = (df[col] - col_min) / (col_max - col_min)
 
+        # Save normalized data
+    df_norm.to_csv(PROCESSED_DIR / "cmapss_normalized.csv", index=False)
+    print(f"  Saved normalized data to data/processed/cmapss_normalized.csv")
+
     return df_norm, useful_sensors
 
 # ── CALCULATE ENGINE HEALTH PROFILES ───────────────────────
