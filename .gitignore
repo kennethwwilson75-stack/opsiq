@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 .streamlit/secrets.toml
 *.db
+data/raw/robot_runs_history.csv
