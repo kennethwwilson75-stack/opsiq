@@ -1,9 +1,13 @@
 import os
 import streamlit as st
 
-# Set API key FIRST before any other imports
+# Set API key from secrets
 if hasattr(st, 'secrets') and "ANTHROPIC_API_KEY" in st.secrets:
     os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
+
+# TEMPORARY DEBUG — remove after testing
+st.sidebar.write(f"Key loaded: {bool(os.environ.get('ANTHROPIC_API_KEY'))}")
+st.sidebar.write(f"Key length: {len(os.environ.get('ANTHROPIC_API_KEY', ''))}")
 
 # Now import everything else
 import pandas as pd
