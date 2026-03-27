@@ -2,12 +2,16 @@ import os
 import streamlit as st
 
 # Set API key from secrets
-if hasattr(st, 'secrets') and "ANTHROPIC_API_KEY" in st.secrets:
-    os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
-
-# TEMPORARY DEBUG — remove after testing
-st.sidebar.write(f"Key loaded: {bool(os.environ.get('ANTHROPIC_API_KEY'))}")
-st.sidebar.write(f"Key length: {len(os.environ.get('ANTHROPIC_API_KEY', ''))}")
+# Try multiple ways to get the key
+try:
+    api_key = st.secrets["ANTHROPIC_API_KEY"]
+    os.environ["ANTHROPIC_API_KEY"] = api_key
+    st.sidebar.write(f"Key loaded from secrets: True, length: {len(api_key)}")
+except Exception as e:
+    st.sidebar.write(f"Secrets error: {e}")
+    # Fall back to env
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    st.sidebar.write(f"Key from env: {bool(api_key)}")
 
 # Now import everything else
 import pandas as pd
