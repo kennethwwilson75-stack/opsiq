@@ -1,0 +1,9 @@
+anthropic
+langchain
+langgraph
+langchain-anthropic
+pandas
+numpy
+streamlit
+python-dotenv
+pydantic

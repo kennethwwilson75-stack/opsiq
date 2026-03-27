@@ -1,0 +1,8 @@
+[server]
+enableCORS = false
+enableXsrfProtection = false
+headless = false
+
+[browser]
+serverAddress = "localhost"
+gatherUsageStats = false
