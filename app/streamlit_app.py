@@ -91,11 +91,17 @@ def status_badge(status: str) -> str:
     return f'<span style="background:{color};color:white;padding:2px 10px;border-radius:12px;font-size:.8rem;font-weight:600">{status.upper()}</span>'
 
 def run_analysis(df: pd.DataFrame) -> dict:
-    """Run the full OpsIQ pipeline against uploaded or default data."""
+    import os
+    import streamlit as st
+    
+    # Force set the API key right before pipeline runs
+    api_key = st.secrets.get("ANTHROPIC_API_KEY", os.environ.get("ANTHROPIC_API_KEY"))
+    os.environ["ANTHROPIC_API_KEY"] = api_key or ""
+    
     with st.spinner("Running OpsIQ pipeline... this takes 30-60 seconds"):
         raw_data = df.to_dict(orient="records")
         run_id = str(uuid.uuid4())[:8]
-
+        
         initial_state = OpsIQState(
             raw_data=raw_data,
             data_source="agv",
