@@ -6,7 +6,6 @@ import streamlit as st
 try:
     api_key = st.secrets["ANTHROPIC_API_KEY"]
     os.environ["ANTHROPIC_API_KEY"] = api_key
-    st.sidebar.write(f"Key loaded from secrets: True, length: {len(api_key)}")
 except Exception as e:
     st.sidebar.write(f"Secrets error: {e}")
     # Fall back to env
@@ -58,7 +57,7 @@ st.markdown("""
 
 # ── SIDEBAR ─────────────────────────────────────────────────
 with st.sidebar:
-    st.image("https://via.placeholder.com/200x60/1F4E79/FFFFFF?text=OpsIQ", width=200)
+    #st.image("https://via.placeholder.com/200x60/1F4E79/FFFFFF?text=OpsIQ", width=200)
     st.markdown("---")
     st.markdown("### Navigation")
     page = st.radio(
