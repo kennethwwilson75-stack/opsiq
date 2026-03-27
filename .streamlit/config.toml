@@ -1,8 +1,11 @@
 [server]
 enableCORS = false
 enableXsrfProtection = false
-headless = false
+headless = true
 
 [browser]
 serverAddress = "localhost"
 gatherUsageStats = false
+
+[runner]
+fastReruns = true
