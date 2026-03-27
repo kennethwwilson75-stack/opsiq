@@ -216,11 +216,15 @@ def run_alerting_agent(state: OpsIQState) -> dict:
     print(f"[Alerting Agent] Generated {len(alerts)} alerts")
     print("[Alerting Agent] Calling Claude for notification summary...")
 
-    import anthropic
-    from dotenv import load_dotenv
-    load_dotenv()
+ import anthropic
+import os
+from dotenv import load_dotenv
+load_dotenv(override=False)
 
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+api_key = os.getenv("ANTHROPIC_API_KEY")
+if not api_key:
+    raise ValueError("ANTHROPIC_API_KEY not found in environment")
+client = anthropic.Anthropic(api_key=api_key)
 
     alert_context = "\n".join([
         f"Alert {a.alert_id}: [{a.severity.upper()}] {a.alert_type} — "

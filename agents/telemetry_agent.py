@@ -103,12 +103,15 @@ def run_telemetry_agent(state: OpsIQState) -> dict:
     # ── CALL CLAUDE FOR INTERPRETATION ─────────────────────
     print("[Telemetry Agent] Calling Claude for interpretation...")
 
-    import anthropic
-    import os
-    from dotenv import load_dotenv
-    load_dotenv()
+import anthropic
+import os
+from dotenv import load_dotenv
+load_dotenv(override=False)
 
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+api_key = os.getenv("ANTHROPIC_API_KEY")
+if not api_key:
+    raise ValueError("ANTHROPIC_API_KEY not found in environment")
+client = anthropic.Anthropic(api_key=api_key)
 
     # Build context for Claude
     context = f"""Fleet telemetry analysis results:
