@@ -49,7 +49,7 @@ def run_telemetry_agent(state: OpsIQState) -> dict:
     from dotenv import load_dotenv
     load_dotenv(override=False)
     api_key = os.environ.get("ANTHROPIC_API_KEY")
-    client = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic()
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
 print(f"[Telemetry Agent] API key found: {bool(api_key)}, length: {len(api_key) if api_key else 0}")
