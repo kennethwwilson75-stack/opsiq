@@ -3,6 +3,14 @@ import pandas as pd
 import json
 import uuid
 import sys
+import os
+
+# Load API key from Streamlit secrets or .env
+if "ANTHROPIC_API_KEY" in st.secrets:
+    os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
+else:
+    from dotenv import load_dotenv
+    load_dotenv()
 from datetime import datetime
 from pathlib import Path
 
