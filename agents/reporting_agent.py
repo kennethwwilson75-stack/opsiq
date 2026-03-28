@@ -6,7 +6,7 @@ import os
 import uuid
 from datetime import datetime
 
-from agents.state import (
+from .state import (
     OpsIQState,
     ReportOutput
 )
@@ -61,14 +61,11 @@ def run_reporting_agent(state: OpsIQState) -> dict:
     print(f"[Reporting Agent] Pipeline errors: {len(state.errors)}")
 
 import anthropic
-import os
-from dotenv import load_dotenv
-load_dotenv(override=False)
-
-api_key = os.getenv("ANTHROPIC_API_KEY")
-if not api_key:
-    raise ValueError("ANTHROPIC_API_KEY not found in environment")
-client = anthropic.Anthropic(api_key=api_key)
+    import os
+    from dotenv import load_dotenv
+    load_dotenv(override=False)
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    client = anthropic.Anthropic(api_key=api_key)
 
     # ── BUILD FULL CONTEXT ──────────────────────────────────
     # Compile everything the Reporting Agent needs
