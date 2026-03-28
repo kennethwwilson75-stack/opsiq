@@ -57,10 +57,10 @@ def run_reporting_agent(state: OpsIQState) -> dict:
         print(f"[Reporting Agent] ERROR: {error_msg}")
         return {"errors": state.errors + [error_msg]}
 
-    print(f"[Reporting Agent] Processing {alerts.escalation_count} escalations")
+print(f"[Reporting Agent] Processing {alerts.escalation_count} escalations")
     print(f"[Reporting Agent] Pipeline errors: {len(state.errors)}")
 
-import anthropic
+    import anthropic
     import os
     from dotenv import load_dotenv
     load_dotenv(override=False)
