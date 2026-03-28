@@ -38,21 +38,13 @@ Be direct and specific. Name the robots. State the severity.
 Do not use markdown. Do not repeat the raw numbers — interpret them."""
 
 def run_telemetry_agent(state: OpsIQState) -> dict:
-    """
-    Telemetry Agent node for LangGraph.
-    Reads raw_data from state, runs all telemetry tools,
-    writes TelemetryOutput back to state.
-    """
     import anthropic
     import os
     from dotenv import load_dotenv
     load_dotenv(override=False)
     api_key = os.environ.get("ANTHROPIC_API_KEY")
-    client = anthropic.Anthropic()
-
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-print(f"[Telemetry Agent] API key found: {bool(api_key)}, length: {len(api_key) if api_key else 0}")
-client = anthropic.Anthropic(api_key=api_key)
+    print(f"[Telemetry Agent] API key found: {bool(api_key)}, length: {len(api_key) if api_key else 0}")
+    client = anthropic.Anthropic(api_key=api_key)
 
     print("\n[Telemetry Agent] Starting analysis...")
 
