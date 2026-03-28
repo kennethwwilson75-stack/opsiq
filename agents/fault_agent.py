@@ -131,7 +131,8 @@ telemetry.congestion.model_dump()
     )
 
     # ── CALL CLAUDE FOR FAULT INTERPRETATION ────────────────
-print("[Fault Agent] Calling Claude for fault interpretation...")
+# ── CALL CLAUDE FOR FAULT INTERPRETATION ────────────────
+    print("[Fault Agent] Calling Claude for fault interpretation...")
 
     import anthropic
     import os
