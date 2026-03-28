@@ -10,11 +10,11 @@ from datetime import datetime
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
 
-from agents.state import OpsIQState
-from agents.telemetry_agent import run_telemetry_agent
-from agents.fault_agent import run_fault_agent
-from agents.alerting_agent import run_alerting_agent
-from agents.reporting_agent import run_reporting_agent
+from .state import OpsIQState
+from .telemetry_agent import run_telemetry_agent
+from .fault_agent import run_fault_agent
+from .alerting_agent import run_alerting_agent
+from .reporting_agent import run_reporting_agent
 
 # ── CONDITIONAL ROUTING ─────────────────────────────────────
 def route_after_telemetry(state: OpsIQState) -> str:
