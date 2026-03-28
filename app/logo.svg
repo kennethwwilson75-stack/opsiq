@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Globe -->
+  <circle cx="30" cy="30" r="22" fill="none" stroke="#1D9E75" stroke-width="2.2"/>
+  <!-- Equator -->
+  <ellipse cx="30" cy="30" rx="22" ry="8" fill="none" stroke="#5DCAA5" stroke-width="1.4"/>
+  <!-- Meridian line — thick, slightly curved to echo the Q -->
+  <path d="M30 8 C28 20, 28 40, 30 52" fill="none" stroke="#1D9E75" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- Q tail — curves out from bottom of meridian -->
+  <path d="M30 48 C34 54, 42 56, 48 50" fill="none" stroke="#1D9E75" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- Latitude lines -->
+  <ellipse cx="30" cy="20" rx="18" ry="5" fill="none" stroke="#5DCAA5" stroke-width="0.8" opacity="0.6"/>
+  <ellipse cx="30" cy="40" rx="18" ry="5" fill="none" stroke="#5DCAA5" stroke-width="0.8" opacity="0.6"/>
+  <!-- Text: MeridianIQ -->
+  <text x="62" y="25" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="700" fill="#2C2C2A" letter-spacing="0.5">
+    Meridian<tspan fill="#1D9E75" font-weight="800">IQ</tspan>
+  </text>
+  <!-- Tagline -->
+  <text x="62" y="43" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#888780" letter-spacing="0.8">
+    INDUSTRIAL FLEET INTELLIGENCE
+  </text>
+</svg>
