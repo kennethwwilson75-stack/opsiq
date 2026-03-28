@@ -1,11 +1,10 @@
-import pandas as pd
 import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+import pandas as pd
 import uuid
 from datetime import datetime
-from pathlib import Path
-
-# Add root to path so we can import from tools/
-sys.path.append(str(Path(__file__).parent.parent))
 
 from tools.analysis_tools import (
     get_run_metrics,

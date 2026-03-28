@@ -1,10 +1,10 @@
-import pandas as pd
 import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+import pandas as pd
 import os
 from datetime import datetime
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).parent.parent))
 
 from tools.analysis_tools import (
     detect_sensor_anomaly,

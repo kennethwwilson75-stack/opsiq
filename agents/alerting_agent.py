@@ -1,11 +1,11 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import json
 import os
-import sys
 import uuid
 from datetime import datetime
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).parent.parent))
 
 from agents.state import (
     OpsIQState,
