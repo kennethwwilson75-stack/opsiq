@@ -212,14 +212,12 @@ def run_alerting_agent(state: OpsIQState) -> dict:
     severity_order = {"critical": 0, "high": 1, "moderate": 2}
     alerts.sort(key=lambda a: severity_order.get(a.severity, 3))
 
-# ── CALL CLAUDE FOR ALERT SUMMARY ───────────────────────
+    # ── CALL CLAUDE FOR ALERT SUMMARY ───────────────────────
     print(f"[Alerting Agent] Generated {len(alerts)} alerts")
     print("[Alerting Agent] Calling Claude for notification summary...")
 
     import anthropic
     import os
-    from dotenv import load_dotenv
-    load_dotenv(override=False)
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     client = anthropic.Anthropic(api_key=api_key)
 

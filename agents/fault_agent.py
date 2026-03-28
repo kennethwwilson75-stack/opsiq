@@ -120,8 +120,8 @@ def run_fault_agent(state: OpsIQState) -> dict:
     print("[Fault Agent] Running cascade risk analysis...")
     cascade_raw = identify_cascade_risks(
         df,
-       telemetry.deadlocks.model_dump(),
-telemetry.congestion.model_dump()
+        telemetry.deadlocks.model_dump(),
+        telemetry.congestion.model_dump()
     )
     cascade_risks = CascadeRisk(
         cascade_risks_detected=cascade_raw["cascade_risks_detected"],
@@ -131,13 +131,10 @@ telemetry.congestion.model_dump()
     )
 
     # ── CALL CLAUDE FOR FAULT INTERPRETATION ────────────────
-# ── CALL CLAUDE FOR FAULT INTERPRETATION ────────────────
     print("[Fault Agent] Calling Claude for fault interpretation...")
 
     import anthropic
     import os
-    from dotenv import load_dotenv
-    load_dotenv(override=False)
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     client = anthropic.Anthropic(api_key=api_key)
 
