@@ -16,7 +16,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+# Add root to path for cloud deployment
+root_path = Path(__file__).parent.parent
+if str(root_path) not in sys.path:
+    sys.path.insert(0, str(root_path))
 
 from agents.pipeline import run_pipeline, build_pipeline
 from agents.state import (
